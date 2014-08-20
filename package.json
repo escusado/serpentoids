@@ -4,5 +4,6 @@
   "version" : "0.0.0",
   "private" : true,
   "dependencies" : {
+      "serpentity" : "0.1.x"
   }
 }
