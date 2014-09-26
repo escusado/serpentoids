@@ -1,9 +1,8 @@
-Class(Serpentoids.Components, "Position")({
+Class(Serpentoids.Components, "DisplayShape")({
     prototype : {
-        x : 0,
-        y : 0,
+        shape : null,
 
-        init : function init(config) {
+        init : function (config) {
             var property;
 
             for (property in config) {
@@ -11,10 +10,6 @@ Class(Serpentoids.Components, "Position")({
                     this[property] = config[property];
                 }
             }
-        },
-
-        get : function get(){
-           return {x: this.x, y: this.y};
         }
     }
 });

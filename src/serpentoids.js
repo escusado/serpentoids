@@ -34,9 +34,18 @@ Module("Serpentoids")({
             keyboard : this.game.input.keyboard,
         }));
         this.engine.addSystem(new Serpentoids.Systems.PhaserRenderer());
+        this.engine.addSystem(new Serpentoids.Systems.PhaserShapeRenderer());
+        this.engine.addSystem(new Serpentoids.Systems.MouseFollower());
+        this.engine.addSystem(new Serpentoids.Systems.EntityFollower());
     },
 
     _initializeEntities : function initializeEntities() {
         this.entityFactory.createSampleEntity();
+        this.entityFactory.createDotMouseFollowerEntity(0.1);
+
+        // for(var i=1;i< 10;i++){
+        //     prev_entity = this.entityFactory.createDotEntityFollowerEntity(0.1, prev_entity);
+        // }
+
     }
 });

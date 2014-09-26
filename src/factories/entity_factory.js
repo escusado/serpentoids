@@ -3,8 +3,8 @@ Module(Serpentoids, "EntityFactory")({
     createSampleEntity : function createSampleEntity() {
         var entity, graphic;
 
-            Serpentoids.game.load.image("cow", "/assets/img/cow.png");
-            graphic = Serpentoids.game.add.sprite(0, 0, "cow")
+            Serpentoids.game.load.image("cow", "assets/img/cow.png");
+            graphic = Serpentoids.game.add.sprite(0, 0, "cow");
 
             entity = new (Serpentity.Entity)();
             entity.addComponent(new Serpentoids.Components.Position({
@@ -23,5 +23,72 @@ Module(Serpentoids, "EntityFactory")({
                 accelerationRate : 2
             }));
             return Serpentoids.engine.addEntity(entity);
+    },
+
+    createDotMouseFollowerEntity : function createDotMouseFollowerEntity(speed){
+
+        var entity,
+            circle = Serpentoids.game.add.graphics(0, 0);
+
+        // draw a dot
+        circle.lineStyle(0);
+        circle.beginFill(0xFFCB00, 0.9);
+        circle.drawCircle(0,0,3);
+
+        entity = new (Serpentity.Entity)();
+
+        entity.addComponent(new Serpentoids.Components.Position({
+            x: 100,
+            y: 100
+        }));
+
+        entity.addComponent(new Serpentoids.Components.Motion());
+
+        entity.addComponent(new Serpentoids.Components.DisplayShape({
+            shape : circle
+        }));
+
+        entity.addComponent(new Serpentoids.Components.MouseFollower({
+            speed : speed,
+            input : Serpentoids.game.input.mousePointer
+        }));
+
+        Serpentoids.engine.addEntity(entity);
+
+        this.createDotEntityFollowerEntity(0.1, entity);
+
+        return entity;
+    },
+
+    createDotEntityFollowerEntity : function createDotEntityFollowerEntity(speed, entity){
+        var entity
+            circle = Serpentoids.game.add.graphics(0, 0);
+
+        // draw a dot
+        circle.lineStyle(0);
+        circle.beginFill(0xFF4C00, 0.2);
+        circle.drawCircle(0,0,3);
+
+        entity = new (Serpentity.Entity)();
+
+        entity.addComponent(new Serpentoids.Components.Position({
+            x: 100,
+            y: 100
+        }));
+
+        entity.addComponent(new Serpentoids.Components.Motion());
+
+        entity.addComponent(new Serpentoids.Components.DisplayShape({
+            shape : circle
+        }));
+
+        entity.addComponent(new Serpentoids.Components.EntityFollower({
+            speed : speed,
+            entity : entity
+        }));
+
+        Serpentoids.engine.addEntity(entity);
+
+        return entity;
     }
 });

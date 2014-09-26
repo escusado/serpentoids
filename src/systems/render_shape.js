@@ -1,8 +1,8 @@
-Class(Serpentoids.Systems, "PhaserRenderer").inherits(Serpentity.System)({
+Class(Serpentoids.Systems, "PhaserShapeRenderer").inherits(Serpentity.System)({
     prototype : {
         renderables : null,
         added : function added(engine) {
-            this.renderables = engine.getNodes(Serpentoids.Nodes.Render);
+            this.renderables = engine.getNodes(Serpentoids.Nodes.ShapeRender);
         },
         removed : function removed(engine) {
             this.renderables = null;
@@ -10,9 +10,8 @@ Class(Serpentoids.Systems, "PhaserRenderer").inherits(Serpentity.System)({
         update : function update(dt) {
             this.renderables.forEach(function (renderable) {
                 // TODO: Give this guy the game instance on init...
-                renderable.display.graphic.x = renderable.position.x;
-                renderable.display.graphic.y = renderable.position.y;
-                // console.log(renderable.position)
+                renderable.display_shape.shape.position.x = renderable.position.x;
+                renderable.display_shape.shape.position.y = renderable.position.y;
             })
         }
     }

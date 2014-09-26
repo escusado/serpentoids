@@ -1,7 +1,8 @@
-Class(Serpentoids.Components, "Position")({
+Class(Serpentoids.Components, "EntityFollower")({
     prototype : {
-        x : 0,
-        y : 0,
+
+        speed : null,
+        target : null,
 
         init : function init(config) {
             var property;
@@ -11,10 +12,6 @@ Class(Serpentoids.Components, "Position")({
                     this[property] = config[property];
                 }
             }
-        },
-
-        get : function get(){
-           return {x: this.x, y: this.y};
         }
     }
 });
