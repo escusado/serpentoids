@@ -60,7 +60,7 @@ Module(Serpentoids, "EntityFactory")({
         return entity;
     },
 
-    createDotEntityFollowerEntity : function createDotEntityFollowerEntity(speed, entity){
+    createDotEntityFollowerEntity : function createDotEntityFollowerEntity(speed, followedEntity){
         var entity
             circle = Serpentoids.game.add.graphics(0, 0);
 
@@ -84,7 +84,23 @@ Module(Serpentoids, "EntityFactory")({
 
         entity.addComponent(new Serpentoids.Components.EntityFollower({
             speed : speed,
-            entity : entity
+            entity : followedEntity
+        }));
+
+        Serpentoids.engine.addEntity(entity);
+
+        return entity;
+    },
+
+    createLineEntity : function createLineEntity(config){
+        var entity;
+
+        entity = new (Serpentity.Entity)();
+
+        entity.addComponent(new Serpentoids.Components.Line({
+            entity_from : config.entity_from,
+            entity_to : config.entity_to,
+            graphic : new Phaser.Line(0, 0, 10, 10)
         }));
 
         Serpentoids.engine.addEntity(entity);

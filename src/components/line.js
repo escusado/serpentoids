@@ -1,7 +1,9 @@
-Class(Serpentoids.Components, "Position")({
+Class(Serpentoids.Components, "Line")({
     prototype : {
-        x : 0,
-        y : 0,
+        entity_from : null,
+        entity_to : null,
+
+        graphic : null,
 
         init : function init(config) {
             var property;
