@@ -27,13 +27,13 @@ Module(Serpentoids, "EntityFactory")({
 
     createDotMouseFollowerEntity : function createDotMouseFollowerEntity(speed){
 
-        var entity,
-            circle = Serpentoids.game.add.graphics(0, 0);
+        var entity;
+        //     circle = Serpentoids.game.add.graphics(0, 0);
 
-        // draw a dot
-        circle.lineStyle(0);
-        circle.beginFill(0xFFCB00, 0.9);
-        circle.drawCircle(0,0,3);
+        // // draw a dot
+        // circle.lineStyle(0);
+        // circle.beginFill(0x8A9B0F);
+        // circle.drawCircle(0,0,5);
 
         entity = new (Serpentity.Entity)();
 
@@ -44,9 +44,9 @@ Module(Serpentoids, "EntityFactory")({
 
         entity.addComponent(new Serpentoids.Components.Motion());
 
-        entity.addComponent(new Serpentoids.Components.DisplayShape({
-            shape : circle
-        }));
+        // entity.addComponent(new Serpentoids.Components.DisplayShape({
+        //     shape : circle
+        // }));
 
         entity.addComponent(new Serpentoids.Components.MouseFollower({
             speed : speed,
@@ -61,13 +61,13 @@ Module(Serpentoids, "EntityFactory")({
     },
 
     createDotEntityFollowerEntity : function createDotEntityFollowerEntity(speed, followedEntity){
-        var entity
-            circle = Serpentoids.game.add.graphics(0, 0);
+        var entity;
+        //     circle = Serpentoids.game.add.graphics(0, 0);
 
-        // draw a dot
-        circle.lineStyle(0);
-        circle.beginFill(0xFF4C00, 0.2);
-        circle.drawCircle(0,0,3);
+        // // draw a dot
+        // circle.lineStyle(0);
+        // circle.beginFill(0x0000FF);
+        // circle.drawCircle(0,0,3);
 
         entity = new (Serpentity.Entity)();
 
@@ -78,9 +78,9 @@ Module(Serpentoids, "EntityFactory")({
 
         entity.addComponent(new Serpentoids.Components.Motion());
 
-        entity.addComponent(new Serpentoids.Components.DisplayShape({
-            shape : circle
-        }));
+        // entity.addComponent(new Serpentoids.Components.DisplayShape({
+        //     shape : circle
+        // }));
 
         entity.addComponent(new Serpentoids.Components.EntityFollower({
             speed : speed,

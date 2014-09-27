@@ -8,11 +8,20 @@ Module("Serpentoids")({
 
       this.engine = new Serpentity();
       this.entityFactory = Serpentoids.EntityFactory;
-      this.game = new Phaser.Game(800, 600, Phaser.AUTO, '', {
+      this.game = new Phaser.Game(
+        Math.max(document.documentElement.clientWidth, window.innerWidth || 0),
+        Math.max(document.documentElement.clientHeight, window.innerHeight || 0),
+        Phaser.AUTO,
+        '',
+        {
           preload : this._preload.bind(this),
           create  : this._create.bind(this),
           update  : this._update.bind(this)
-      });
+        },
+        false,
+        false
+      );
+
     },
 
     _preload : function preload() {
@@ -23,6 +32,7 @@ Module("Serpentoids")({
 
     _create : function create() {
         console.log("Creating.");
+        this.game.stage.backgroundColor = '#211122';
     },
 
     _update : function update(game) {
@@ -42,7 +52,7 @@ Module("Serpentoids")({
 
     _initializeEntities : function initializeEntities() {
         // this.entityFactory.createSampleEntity();
-        var prev_entity = this.entityFactory.createDotMouseFollowerEntity(0.1),
+        var prev_entity = this.entityFactory.createDotMouseFollowerEntity(0.3),
             entity_from = prev_entity,
             entity_to;
 
